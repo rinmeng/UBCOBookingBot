@@ -193,8 +193,8 @@ def scriptInput(input):
             # minimize the terminal
             time.sleep(5)
             script = f"""
-            tell application "Terminal" to set visible of front window to false 
-            """
+                tell application "Terminal" set miniaturized of front window to true
+                """
             subprocess.run(["osascript", "-e", script])
             time.sleep(toWait - 4)
 
@@ -355,7 +355,7 @@ def scriptInput(input):
                 # minimize the terminal
                 time.sleep(5)
                 script = f"""
-                tell application "Terminal" to set visible of front window to false 
+                tell application "Terminal" set miniaturized of front window to true
                 """
                 subprocess.run(["osascript", "-e", script])
 
