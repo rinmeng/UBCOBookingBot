@@ -272,10 +272,11 @@ def run_bot():
                 file.write("roomName=" + roomName_label.get() + "\n")
                 file.truncate()
 
+            dir_path = os.path.dirname(os.path.realpath(__file__))
             # run the bot if on mac
             if platform.system() == "Darwin":
-                command = """
-                osascript -e 'tell application "Terminal" to do script "python3 bookingbot.py"'
+                command = f"""
+                osascript -e 'tell application "Terminal" to do script "python3 {os.path.join(dir_path, 'bookingbot.py')}"'
                 osascript -e 'tell application "System Events" to set visible of processes whose name is "Terminal" to false'
                 """
                 subprocess.call(command, shell=True)

@@ -677,11 +677,6 @@ if platform.system() == "Darwin":
     if not isRunningFromSource:
         print("System detected: macOS")
         # resize terminal window to be bigger
-        command = """
-                osascript -e 'tell application "Terminal" to do script "python3 bookingbot.py"'
-                osascript -e 'tell application "System Events" to set visible of processes whose name is "Terminal" to false'
-                """
-        subprocess.call(command, shell=True)
 
         script = f"""
         tell application "Terminal"
@@ -690,8 +685,8 @@ if platform.system() == "Darwin":
             set number of rows of window 1 to {20}
             set number of columns of window 1 to {80}
         end tell
+        tell application "System Events" to set visible of processes whose name is "Terminal" to false
         """
-
         subprocess.run(["osascript", "-e", script])
 
         if not os.path.exists("UBBuserdata.dat"):
