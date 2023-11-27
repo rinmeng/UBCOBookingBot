@@ -297,6 +297,7 @@ def stop_bot():
         stop_button.config(state="disabled")
     # stop the bot if on mac
     if platform.system() == "Darwin":
+        print("ALERT: Bot stopped.")
         subprocess.Popen(
             [
                 "pkill",
