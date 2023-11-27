@@ -61,17 +61,17 @@ if isRunningFromSource == False:
 
 # Check if the request was successful
 if isRunningFromSource == False:
-    url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.py"
+    url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.pyw"
     response = requests.get(url)
     if response.status_code == 200:
         # Read the content of the local script
-        with open("BookingBotApp.py", "r") as file:
+        with open("BookingBotApp.pyw", "r") as file:
             local_script = file.read()
 
         # Compare with the GitHub script
         if response.text != local_script:
             # If the scripts don't match, update the local script
-            with open("BookingBotApp.py", "w") as file:
+            with open("BookingBotApp.pyw", "w") as file:
                 file.write(response.text)
 # ---------------------------------------------------------------------------
 
