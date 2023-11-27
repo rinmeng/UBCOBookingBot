@@ -192,9 +192,11 @@ def scriptInput(input):
             # try again when the minute of current time is 30 or 00
             # minimize the terminal
             time.sleep(5)
-            script = f"""
-                tell application "Terminal" set miniaturized of front window to true
-                """
+            script = """
+            tell application "Terminal"
+                set miniaturized of front window to true
+            end tell
+            """
             subprocess.run(["osascript", "-e", script])
             time.sleep(toWait - 4)
 
@@ -354,8 +356,10 @@ def scriptInput(input):
                 before_sleep_url = driver.current_url
                 # minimize the terminal
                 time.sleep(5)
-                script = f"""
-                tell application "Terminal" set miniaturized of front window to true
+                script = """
+                tell application "Terminal"
+                    set miniaturized of front window to true
+                end tell
                 """
                 subprocess.run(["osascript", "-e", script])
 
