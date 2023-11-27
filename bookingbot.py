@@ -92,9 +92,7 @@ def check_for_updates():
             print("BookingBotApp.pyw downloaded.")
             print("Please run BookingBotApp.pyw to use the app version of this bot.")
             time.sleep(3)
-            script = """tell application "System Events" to set visible of processes whose name is "Terminal" to false"""
-            subprocess.run(["osascript", "-e", script])
-            sys.exit()
+            os._exit(0)
 
 
 def scriptInput(input):
