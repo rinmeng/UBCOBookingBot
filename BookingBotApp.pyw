@@ -246,6 +246,7 @@ running = False
 
 
 def run_bot():
+    print("\n\nALERT: Bot started.")
     global running
     room_number = ""
     if not running:
@@ -289,6 +290,7 @@ def run_bot():
 
 
 def stop_bot():
+    print("\n\nALERT: Bot stopped.")
     global running
     if running:
         message_var.set("Bot stopped.")
@@ -297,7 +299,6 @@ def stop_bot():
         stop_button.config(state="disabled")
     # stop the bot if on mac
     if platform.system() == "Darwin":
-        print("ALERT: Bot stopped.")
         subprocess.Popen(
             [
                 "pkill",
