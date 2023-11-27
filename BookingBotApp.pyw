@@ -276,6 +276,12 @@ def run_bot():
                         "bookingbot.py",
                     ]
                 )
+                command = """
+                osascript -e 'tell application "Terminal" to do script "python3 bookingbot.py"'
+                osascript -e 'tell application "System Events" to set visible of processes whose name is "Terminal" to false'
+                """
+
+                subprocess.call(command, shell=True)
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
