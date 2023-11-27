@@ -274,7 +274,7 @@ def run_bot():
                     [
                         "python3",
                         "bookingbot.py",
-                    ]
+                    ],
                 )
                 command = """
                 osascript -e 'tell application "Terminal" to do script "python3 bookingbot.py"'
