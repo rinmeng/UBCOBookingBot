@@ -72,15 +72,8 @@ def check_for_updates():
             with open("bookingbot.py", "w") as file:
                 # Overwrite the content of the local script with the content of the script on GitHub
                 file.write(github_script)
-            print(
-                "Your script has been updated, please rerun the program to apply the update."
-            )
-            print("\n")
-            time.sleep(3)
-            sys.exit()
+                print("Your script has been updated")
 
-    else:
-        print(f"An error occurred: {response.status_code}")
     if not os.path.exists("BookingBotApp.py") and isRunningFromSource == False:
         print("The app version is available, downloading now...")
         # URL of the raw content of the script on GitHub
@@ -96,9 +89,14 @@ def check_for_updates():
             with open("BookingBotApp.py", "w") as file:
                 # Overwrite the content of the local script with the content of the script on GitHub
                 file.write(github_script)
-            print("BookingBotApp.py created.")
+            print("BookingBotApp.py downloaded.")
+            print("Please run BookingBotApp.py to use the app version of this bot.")
+            time.sleep(3)
+            sys.exit()
         else:
             print(f"An error occurred: {response.status_code}")
+    else:
+        print(f"An error occurred: {response.status_code}")
 
 
 def scriptInput(input):
