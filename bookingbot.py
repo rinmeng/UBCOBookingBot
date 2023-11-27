@@ -92,7 +92,7 @@ def check_for_updates():
             print("BookingBotApp.pyw downloaded.")
             print("Please run BookingBotApp.pyw to use the app version of this bot.")
             time.sleep(3)
-            os._exit(0)
+            os.system("exit")
 
 
 def scriptInput(input):
@@ -346,6 +346,12 @@ def scriptInput(input):
                 )
 
                 before_sleep_url = driver.current_url
+                # minimize the terminal 
+                script = f"""
+                tell application "Terminal" to set visible of front window to false 
+                """
+                subprocess.run(["osascript", "-e", script])
+
                 time.sleep(timeDiffSec - 10)
 
                 # count down the last 9 seconds and use carraige return to overwrite the previous line)

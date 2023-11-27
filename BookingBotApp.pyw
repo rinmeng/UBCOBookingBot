@@ -60,7 +60,7 @@ if isRunningFromSource == False:
                     file.write(github_script)
                     print("Your script has been updated please restart the app")
                     time.sleep(5)
-                    os._exit(0)
+                    os.system("exit")
 
 
 # Check if the request was successful
