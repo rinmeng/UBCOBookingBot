@@ -190,10 +190,16 @@ def scriptInput(input):
                 "seconds.",
             )
             # try again when the minute of current time is 30 or 00
-            time.sleep(toWait - 9)
+            # minimize the terminal
+            time.sleep(5)
+            script = f"""
+            tell application "Terminal" to set visible of front window to false 
+            """
+            subprocess.run(["osascript", "-e", script])
+            time.sleep(toWait - 4)
 
             # count down the last 9 seconds and use carraige return to overwrite the previous line)
-            count = 9
+            count = 4
             print("Trying again in t minus", count, end="", flush=True)
             while count >= 0:
                 print("\rTrying again in t minus", count, end="", flush=True)
@@ -346,16 +352,17 @@ def scriptInput(input):
                 )
 
                 before_sleep_url = driver.current_url
-                # minimize the terminal 
+                # minimize the terminal
+                time.sleep(5)
                 script = f"""
                 tell application "Terminal" to set visible of front window to false 
                 """
                 subprocess.run(["osascript", "-e", script])
 
-                time.sleep(timeDiffSec - 10)
+                time.sleep(timeDiffSec - 5)
 
                 # count down the last 9 seconds and use carraige return to overwrite the previous line)
-                count = 9
+                count = 4
                 print("Extending in t minus", count, end="", flush=True)
                 while count >= 0:
                     print("\rExtending in t minus", count, end="", flush=True)
