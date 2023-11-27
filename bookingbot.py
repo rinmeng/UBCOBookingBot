@@ -685,6 +685,7 @@ if platform.system() == "Darwin":
             set number of columns of window 1 to {80}
         end tell
         """
+
         subprocess.run(["osascript", "-e", script])
 
         if not os.path.exists("UBBuserdata.dat"):

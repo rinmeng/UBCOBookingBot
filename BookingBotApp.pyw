@@ -270,17 +270,10 @@ def run_bot():
 
             # run the bot if on mac
             if platform.system() == "Darwin":
-                subprocess.Popen(
-                    [
-                        "python3",
-                        "bookingbot.py",
-                    ],
-                )
                 command = """
                 osascript -e 'tell application "Terminal" to do script "python3 bookingbot.py"'
                 osascript -e 'tell application "System Events" to set visible of processes whose name is "Terminal" to false'
                 """
-
                 subprocess.call(command, shell=True)
         else:
             if building_option.get() == "":
