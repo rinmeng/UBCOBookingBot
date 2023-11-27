@@ -1,4 +1,6 @@
 import os
+import sys
+import time
 import requests
 import platform
 import subprocess
@@ -56,7 +58,9 @@ if isRunningFromSource == False:
                 with open("bookingbot.py", "w") as file:
                     # Overwrite the content of the local script with the content of the script on GitHub
                     file.write(github_script)
-                    print("Your script has been updated")
+                    print("Your script has been updated please restart the app")
+                    time.sleep(5)
+                    sys.exit()
 
 
 # Check if the request was successful
