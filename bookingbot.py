@@ -92,6 +92,8 @@ def check_for_updates():
             print("BookingBotApp.pyw downloaded.")
             print("Please run BookingBotApp.pyw to use the app version of this bot.")
             time.sleep(3)
+            script = """tell application "System Events" to set visible of processes whose name is "Terminal" to false"""
+            subprocess.run(["osascript", "-e", script])
             sys.exit()
 
 
@@ -685,7 +687,6 @@ if platform.system() == "Darwin":
             set number of rows of window 1 to {20}
             set number of columns of window 1 to {80}
         end tell
-        tell application "System Events" to set visible of processes whose name is "Terminal" to false
         """
         subprocess.run(["osascript", "-e", script])
 
@@ -713,11 +714,6 @@ if platform.system() == "Darwin":
                 subprocess.run(["pip3", "install", "requests"])
             else:
                 print("Requests library detected")
-        # import requests
-        # from selenium import webdriver
-
-        # driver = webdriver.Chrome()
-        # driver.set_window_size(600, 600)
         check_for_updates()
         print("Keeping computer awake via caffeinate...")
         subprocess.Popen(["caffeinate", "-d", "-i", "-u", "-s", "-t", "10800"])
@@ -750,11 +746,6 @@ elif platform.system() == "Windows":
                 subprocess.run(["pip", "install", "requests"])
             else:
                 print("Requests library detected")
-        # import requests
-        # from selenium import webdriver
-
-        # driver = webdriver.Chrome()
-        # driver.set_window_size(600, 600)
         check_for_updates()
 
 from selenium import webdriver
