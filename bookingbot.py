@@ -93,10 +93,10 @@ def check_for_updates():
             print("Please run BookingBotApp.pyw to use the app version of this bot.")
             time.sleep(3)
             sys.exit()
-        else:
-            print(f"An error occurred: {response.status_code}")
-    else:
-        print(f"An error occurred: {response.status_code}")
+    if os.path.exists("BookingBotApp.pyw") and isRunningFromSource == False:
+        print("Please use BookingBotApp.pyw instead")
+        time.sleep(3)
+        sys.exit()
 
 
 def scriptInput(input):
