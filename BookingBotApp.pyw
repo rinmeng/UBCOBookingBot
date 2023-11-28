@@ -236,6 +236,8 @@ def update_options(*args):
         options = ["not yet implemented"]
 
     room_option["values"] = options
+    if options:
+        room_option.set(options[0])
 
 
 building.trace("w", update_options)
@@ -257,7 +259,6 @@ def run_bot():
             run_button.config(state="disabled")
             stop_button.config(state="normal")
 
-            # Open the file
             with open(info_file, "w") as file:
                 building = building_option.get()
                 file.write("lastUsedRoom=" + room_option.get() + "\n")
@@ -290,7 +291,6 @@ def run_bot():
 
 
 def stop_bot():
-    print("\n\nALERT: Bot stopped.")
     global running
     if running:
         message_var.set("Bot stopped.")
@@ -306,6 +306,7 @@ def stop_bot():
                 end tell
                 """
         subprocess.run(["osascript", "-e", script])
+        print("\nALERT: Bot stopped.")
 
 
 button_frame = ttk.Frame(root)
