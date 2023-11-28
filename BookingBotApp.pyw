@@ -251,10 +251,6 @@ class CustomText(tk.Text):
         self.see(tk.END)
 
 
-terminal_tab = CustomText(root)
-terminal_tab.pack(pady=10)
-
-
 def run_bot():
     sys.stdout = terminal_tab
     print("\n\nALERT: Bot started.")
@@ -333,5 +329,8 @@ stop_button.pack(side="left")
 
 message_label = ttk.Label(root, textvariable=message_var)
 message_label.pack()
+
+terminal_tab = CustomText(root)
+terminal_tab.pack(pady=10)
 
 root.mainloop()
