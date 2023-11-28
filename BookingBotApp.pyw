@@ -8,7 +8,22 @@ import filelock as fl
 import tkinter as tk
 from tkinter import ttk
 
+
+# Check for updates ---------------------------------------------------------
 lock = fl.FileLock("my_app.lock")
+isRunningFromSource = False
+info_file = "UBBuserdata.dat"
+
+if platform.system() == "Darwin" and not isRunningFromSource:
+    print("System detected: macOS")
+    if (
+        subprocess.run(["pip3", "show", "requests"], capture_output=True).returncode
+        == 1
+    ):
+        print("Filelock library not installed. installing now...")
+        subprocess.run(["pip3", "install", "filelock"])
+    else:
+        print("Filelock library detected")
 
 if lock.is_locked:
     print("Another instance of this application is already running.")
@@ -26,9 +41,6 @@ else:
         root = tk.Tk()
         root.mainloop()
 
-# Check for updates ---------------------------------------------------------
-isRunningFromSource = False
-info_file = "UBBuserdata.dat"
 # Check if we are running from source
 if (
     os.path.exists("INFOS.md")
