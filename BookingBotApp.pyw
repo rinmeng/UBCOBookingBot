@@ -247,8 +247,10 @@ running = False
 
 class CustomText(tk.Text):
     def write(self, s):
+        self.configure(state="normal")
         self.insert(tk.END, s)
         self.see(tk.END)
+        self.configure(state="disabled")
 
 
 def run_bot():
@@ -287,9 +289,9 @@ def run_bot():
                     [
                         "python3",
                         "bookingbot.py",
-                    ]
+                    ],
+                    stdout=sys.stdout,
                 )
-                stdout = sys.stdout
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
