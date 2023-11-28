@@ -281,6 +281,10 @@ def run_bot():
                         "bookingbot.py",
                     ]
                 )
+            message_var.set(
+                "Bot is running in terminal, please do not close the terminal window."
+                + "\n\nIf you want to stop the bot, click the 'Stop bot' button."
+            )
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
@@ -304,7 +308,7 @@ def stop_bot():
                 end tell
                 """
         subprocess.run(["osascript", "-e", script])
-        print("\nALERT: Bot stopped.")
+        print("ALERT: Bot stopped.")
 
 
 button_frame = ttk.Frame(root)
