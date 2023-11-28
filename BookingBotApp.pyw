@@ -299,13 +299,13 @@ def stop_bot():
         stop_button.config(state="disabled")
     # stop the bot if on mac
     if platform.system() == "Darwin":
-        subprocess.Popen(
-            [
-                "pkill",
-                "-f",
-                "bookingbot.py",
-            ]
-        )
+        script = """
+                do shell script "pkill -f bookingbot.py"
+                tell application "Terminal"
+                    set miniaturized of front window to true
+                end tell
+                """
+        subprocess.run(["osascript", "-e", script])
 
 
 button_frame = ttk.Frame(root)
