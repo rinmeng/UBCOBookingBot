@@ -245,21 +245,9 @@ message_var.set("Please select a building and room")
 running = False
 
 
-class CustomText(tk.Text):
-    def write(self, s):
-        self.configure(state="normal")
-        self.insert(tk.END, s)
-        self.see(tk.END)
-        self.configure(state="disabled")
-
-
-f = ""
-
-
 def run_bot():
     global f
     global running
-    sys.stdout = terminal_tab
     room_number = ""
     if not running:
         if building_option.get() != "" and room_option.get() != "":
@@ -333,8 +321,5 @@ stop_button.pack(side="left")
 
 message_label = ttk.Label(root, textvariable=message_var)
 message_label.pack()
-
-terminal_tab = CustomText(root, height=30)
-terminal_tab.pack(pady=10)
 
 root.mainloop()
