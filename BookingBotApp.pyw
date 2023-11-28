@@ -4,8 +4,27 @@ import time
 import requests
 import platform
 import subprocess
+import filelock as fl
 import tkinter as tk
 from tkinter import ttk
+
+lock = fl.FileLock("my_app.lock")
+
+if lock.is_locked:
+    print("Another instance of this application is already running.")
+    # count down for 3 seconds before closing and make sure not to create a new line using carraige return
+    count = 3
+    print("Closing in ", count, end="", flush=True)
+    while count >= 0:
+        print("\rTrying again in t minus", count, end="", flush=True)
+        time.sleep(1)
+        count = count - 1
+    print("\n")
+    sys.exit()
+else:
+    with lock:
+        root = tk.Tk()
+        root.mainloop()
 
 # Check for updates ---------------------------------------------------------
 isRunningFromSource = False
