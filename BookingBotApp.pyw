@@ -253,11 +253,11 @@ class CustomText(tk.Text):
 
 def run_bot():
     sys.stdout = terminal_tab
-    print("\n\nALERT: Bot started.")
     global running
     room_number = ""
     if not running:
         if building_option.get() != "" and room_option.get() != "":
+            print("\n\nALERT: Bot started.")
             message_var.set("Running bot...")
             running = True
             run_button.config(state="disabled")
