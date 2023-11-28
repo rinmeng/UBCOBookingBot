@@ -286,19 +286,18 @@ def run_bot():
                 file.write("roomName=" + roomName_label.get() + "\n")
                 file.truncate()
 
-            dir_path = os.path.dirname(os.path.realpath(__file__))
             # run the bot if on mac
             if platform.system() == "Darwin":
-                subprocess.Popen(
+                process = subprocess.Popen(
                     [
                         "python3",
                         "bookingbot.py",
                     ],
-                    stdout=f,
+                    stdout=subprocess.PIPE,
                 )
-                with open("temp.txt", "r") as f:
+                for line in process.stdout:
                     terminal_tab.config(state="normal")
-                    terminal_tab.insert(tk.END, f.read())
+                    terminal_tab.insert(tk.END, line.decode())
                     terminal_tab.config(state="disabled")
         else:
             if building_option.get() == "":
