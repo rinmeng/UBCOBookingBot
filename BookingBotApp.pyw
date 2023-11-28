@@ -276,7 +276,7 @@ def run_bot():
 
             # run the bot if on mac
             if platform.system() == "Darwin":
-                process = subprocess.Popen(
+                subprocess.Popen(
                     [
                         "python3",
                         "bookingbot.py",
@@ -302,7 +302,7 @@ def stop_bot():
         script = """
                 do shell script "pkill -f bookingbot.py"
                 tell application "Terminal"
-                    set miniaturized of front window to true
+                    set miniaturized of front window to false
                 end tell
                 """
         subprocess.run(["osascript", "-e", script])
