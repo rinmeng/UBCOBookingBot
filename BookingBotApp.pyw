@@ -253,9 +253,13 @@ class CustomText(tk.Text):
         self.configure(state="disabled")
 
 
+f = ""
+
+
 def run_bot():
-    sys.stdout = terminal_tab
+    global f
     global running
+    sys.stdout = terminal_tab
     room_number = ""
     if not running:
         if building_option.get() != "" and room_option.get() != "":
