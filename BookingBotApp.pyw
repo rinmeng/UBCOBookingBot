@@ -245,7 +245,18 @@ message_var.set("Please select a building and room")
 running = False
 
 
+class CustomText(tk.Text):
+    def write(self, s):
+        self.insert(tk.END, s)
+        self.see(tk.END)
+
+
+terminal_tab = CustomText(root)
+terminal_tab.pack(pady=10)
+
+
 def run_bot():
+    sys.stdout = terminal_tab
     print("\n\nALERT: Bot started.")
     global running
     room_number = ""
@@ -282,6 +293,7 @@ def run_bot():
                         "bookingbot.py",
                     ]
                 )
+                stdout = sys.stdout
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
