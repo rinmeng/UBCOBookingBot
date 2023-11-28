@@ -330,7 +330,7 @@ stop_button.pack(side="left")
 message_label = ttk.Label(root, textvariable=message_var)
 message_label.pack()
 
-terminal_tab = CustomText(root)
+terminal_tab = CustomText(root, height=30)
 terminal_tab.pack(pady=10)
 
 root.mainloop()
