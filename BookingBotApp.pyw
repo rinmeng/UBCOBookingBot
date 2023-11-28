@@ -236,8 +236,6 @@ def update_options(*args):
         options = ["not yet implemented"]
 
     room_option["values"] = options
-    if options:
-        room_option.set(options[0])
 
 
 building.trace("w", update_options)
