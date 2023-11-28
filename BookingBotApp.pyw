@@ -292,14 +292,8 @@ def run_bot():
                     [
                         "python3",
                         "bookingbot.py",
-                    ],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
+                    ]
                 )
-                stdout, stderr = process.communicate()
-                terminal_tab.config(state="normal")
-                terminal_tab.insert(tk.END, stdout.decode())
-                terminal_tab.config(state="disabled")
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
