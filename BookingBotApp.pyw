@@ -4,43 +4,13 @@ import time
 import requests
 import platform
 import subprocess
-import filelock as fl
 import tkinter as tk
 from tkinter import ttk
 
 
 # Check for updates ---------------------------------------------------------
-lock = fl.FileLock("my_app.lock")
 isRunningFromSource = False
 info_file = "UBBuserdata.dat"
-
-if platform.system() == "Darwin" and not isRunningFromSource:
-    print("System detected: macOS")
-    if (
-        subprocess.run(["pip3", "show", "requests"], capture_output=True).returncode
-        == 1
-    ):
-        print("Filelock library not installed. installing now...")
-        subprocess.run(["pip3", "install", "filelock"])
-    else:
-        print("Filelock library detected")
-
-if lock.is_locked:
-    print("Another instance of this application is already running.")
-    # count down for 3 seconds before closing and make sure not to create a new line using carraige return
-    count = 3
-    print("Closing in ", count, end="", flush=True)
-    while count >= 0:
-        print("\rTrying again in t minus", count, end="", flush=True)
-        time.sleep(1)
-        count = count - 1
-    print("\n")
-    sys.exit()
-else:
-    with lock:
-        root = tk.Tk()
-        root.mainloop()
-
 # Check if we are running from source
 if (
     os.path.exists("INFOS.md")
