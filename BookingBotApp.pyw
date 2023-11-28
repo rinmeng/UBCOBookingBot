@@ -290,14 +290,17 @@ def run_bot():
                         "python3",
                         "bookingbot.py",
                     ],
-                    stdout=sys.stdout,
+                    stdout=f,
                 )
+                with open("temp.txt", "r") as f:
+                    terminal_tab.config(state="normal")
+                    terminal_tab.insert(tk.END, f.read())
+                    terminal_tab.config(state="disabled")
         else:
             if building_option.get() == "":
                 message_var.set("Please select a building!")
             elif room_option.get() == "":
                 message_var.set("Please select a room!")
-    sys.stdout = sys.__stdout__
 
 
 def stop_bot():
