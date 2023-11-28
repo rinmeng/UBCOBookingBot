@@ -295,6 +295,7 @@ def run_bot():
                 message_var.set("Please select a building!")
             elif room_option.get() == "":
                 message_var.set("Please select a room!")
+    sys.stdout = sys.__stdout__
 
 
 def stop_bot():
