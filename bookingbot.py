@@ -196,7 +196,7 @@ def scriptInput(input):
             end tell
             """
             subprocess.run(["osascript", "-e", script])
-            time.sleep(toWait - 7)
+            time.sleep(toWait - 9)
 
             # count down the last 9 seconds and use carraige return to overwrite the previous line)
             count = 4
@@ -361,7 +361,7 @@ def scriptInput(input):
                 """
                 subprocess.run(["osascript", "-e", script])
 
-                time.sleep(timeDiffSec - 7)
+                time.sleep(timeDiffSec - 9)
 
                 # count down the last 9 seconds and use carraige return to overwrite the previous line)
                 count = 4
