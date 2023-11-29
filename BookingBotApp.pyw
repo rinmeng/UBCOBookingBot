@@ -87,7 +87,7 @@ APPVERSION = "1.0"
 
 root = tk.Tk()
 root.title("UBCO Booking Bot App v" + APPVERSION)
-root.geometry("400x400")
+root.geometry("400x500")
 root.resizable(False, False)
 
 welcome_message = ttk.Label(root, text="Welcome!")
@@ -369,6 +369,9 @@ def restart_bot():
 button_frame = ttk.Frame(root)
 button_frame.pack(pady=10)
 
+button_frame2 = ttk.Frame(root)
+button_frame2.pack(pady=5)
+
 run_button = ttk.Button(button_frame, text="Start Bot", command=run_bot)
 run_button.pack(side="left", padx=(0, 10))
 
@@ -377,11 +380,11 @@ stop_button = ttk.Button(
 )
 stop_button.pack(side="left", padx=(0, 10))
 
-restart_button = ttk.Button(button_frame, text="Restart Bot", command=restart_bot)
+restart_button = ttk.Button(button_frame2, text="Restart Bot", command=restart_bot)
 restart_button.pack(side="left", padx=(0, 10))
 
 terminal_button = ttk.Button(
-    button_frame, text="Show Terminal", command=toggle_terminal
+    button_frame2, text="Show Terminal", command=toggle_terminal
 )
 terminal_button.pack(side="left", padx=(0, 10))
 
