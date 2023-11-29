@@ -338,7 +338,8 @@ stop_button = ttk.Button(
 )
 stop_button.pack(side="left")
 
-message_label = ttk.Label(root, textvariable=message_var)
+# align center
+message_label = ttk.Label(root, textvariable=message_var, justify="center")
 message_label.pack()
 
 root.mainloop()
