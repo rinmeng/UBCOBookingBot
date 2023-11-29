@@ -361,6 +361,11 @@ def toggle_terminal():
         terminal_shown = not terminal_shown
 
 
+def restart_bot():
+    stop_bot()
+    run_bot()
+
+
 button_frame = ttk.Frame(root)
 button_frame.pack(pady=10)
 
@@ -371,6 +376,9 @@ stop_button = ttk.Button(
     button_frame, text="Stop Bot", command=stop_bot, state="disabled"
 )
 stop_button.pack(side="left", padx=(0, 10))
+
+restart_button = ttk.Button(button_frame, text="Restart Bot", command=restart_bot)
+restart_button.pack(side="left", padx=(0, 10))
 
 terminal_button = ttk.Button(
     button_frame, text="Show Terminal", command=toggle_terminal
