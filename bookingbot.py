@@ -185,9 +185,9 @@ def scriptInput(input):
             print(
                 "Will try again in next possible time:",
                 toWait // 60,
-                "minutes and",
+                "m and",
                 round(toWait) % 60,
-                "seconds.",
+                "s.",
             )
             # try again when the minute of current time is 30 or 00
             # minimize the terminal
@@ -348,9 +348,9 @@ def scriptInput(input):
                     optionAsTime.strftime("%H:%M") + ":00",
                     "\nTime to wait:",
                     timeDiffSec // 60,
-                    "minutes and",
+                    "m and",
                     timeDiffSec % 60,
-                    "seconds." + " Program will sleep until extendable.",
+                    "s." + " Program will sleep until extendable.",
                 )
 
                 before_sleep_url = driver.current_url
