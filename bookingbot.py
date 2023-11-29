@@ -184,8 +184,8 @@ def scriptInput(input):
             print("Current time:", now.strftime("%H:%M:%S"))
             print(
                 "Will try again in next possible time:",
-                (toWait // 60) + "m and",
-                (round(toWait) % 60) + "s.",
+                str(toWait // 60) + "m and",
+                str(round(toWait) % 60) + "s.",
             )
             # try again when the minute of current time is 30 or 00
             # minimize the terminal
@@ -345,8 +345,10 @@ def scriptInput(input):
                     "Waiting for time to be extendable at:",
                     optionAsTime.strftime("%H:%M") + ":00",
                     "\nTime to wait:",
-                    (timeDiffSec // 60) + "m and",
-                    (timeDiffSec % 60) + "s." + " Program will sleep until extendable.",
+                    str(timeDiffSec // 60) + "m and",
+                    str(timeDiffSec % 60)
+                    + "s."
+                    + " Program will sleep until extendable.",
                 )
 
                 before_sleep_url = driver.current_url
