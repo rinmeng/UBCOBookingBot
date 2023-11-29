@@ -88,7 +88,7 @@ APPVERSION = "1.0"
 root = tk.Tk()
 root.title("UBCO Booking Bot App v" + APPVERSION)
 root.geometry("400x450")
-root.resizable(False, False)
+root.resizable(False, False)    
 
 welcome_message = ttk.Label(root, text="Welcome!")
 welcome_message.pack()
