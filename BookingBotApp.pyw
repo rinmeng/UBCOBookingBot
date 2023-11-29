@@ -11,6 +11,7 @@ from tkinter import ttk
 # Check for updates ---------------------------------------------------------
 isRunningFromSource = False
 info_file = "UBBuserdata.dat"
+terminal_shown = False
 # Check if we are running from source
 if (
     os.path.exists("INFOS.md")
@@ -327,18 +328,55 @@ def stop_bot():
         print("ALERT: Bot stopped.")
 
 
+def show_terminal():
+    if platform.system() == "Darwin":
+        script = """
+        tell application "Terminal"
+            set miniaturized of front window to false
+        end tell
+        """
+        subprocess.run(["osascript", "-e", script])
+
+
+def hide_terminal():
+    if platform.system() == "Darwin":
+        script = """
+        tell application "Terminal"
+            set miniaturized of front window to true
+        end tell
+        """
+        subprocess.run(["osascript", "-e", script])
+
+
+def toggle_terminal():
+    global terminal_shown
+    if platform.system() == "Darwin":
+        if terminal_shown:
+            # If terminal is shown, hide it
+            show_terminal()
+            terminal_button.config(text="Hide Terminal")
+        else:
+            hide_terminal()
+            terminal_button.config(text="Show Terminal")
+        terminal_shown = not terminal_shown
+
+
 button_frame = ttk.Frame(root)
 button_frame.pack(pady=10)
 
-run_button = ttk.Button(button_frame, text="Run Bot", command=run_bot)
+run_button = ttk.Button(button_frame, text="Start Bot", command=run_bot)
 run_button.pack(side="left", padx=(0, 10))
 
 stop_button = ttk.Button(
     button_frame, text="Stop Bot", command=stop_bot, state="disabled"
 )
-stop_button.pack(side="left")
+stop_button.pack(side="left", padx=(0, 10))
 
-# align center
+terminal_button = ttk.Button(
+    button_frame, text="Show Terminal", command=toggle_terminal
+)
+terminal_button.pack(side="left", padx=(0, 10))
+
 message_label = ttk.Label(root, textvariable=message_var, justify="center")
 message_label.pack()
 
