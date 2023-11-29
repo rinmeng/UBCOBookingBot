@@ -251,7 +251,14 @@ def run_bot():
     global running
     room_number = ""
     if not running:
-        if building_option.get() != "" and room_option.get() != "":
+        if (
+            building_option.get() != ""
+            and room_option.get() != ""
+            and roomName_label.get() != ""
+            and username_entry.get() != ""
+            and password_entry.get() != ""
+            and roomName_label.get() != ""
+        ):
             print("\n\nALERT: Bot started.")
             message_var.set("Running bot...")
             running = True
@@ -283,14 +290,22 @@ def run_bot():
                     ]
                 )
             message_var.set(
-                "Bot is running in terminal, please do not close the terminal window."
-                + "\n\nIf you want to stop the bot, click the 'Stop bot' button."
+                "Bot is running in terminal.\nPlease do not close the terminal window."
+                + "\nIf you want to stop the bot, click the 'Stop bot' button."
             )
         else:
             if building_option.get() == "":
-                message_var.set("Please select a building!")
+                message_var.set("Please select a building.")
             elif room_option.get() == "":
-                message_var.set("Please select a room!")
+                message_var.set("Please select a room.")
+            elif roomName_label.get() == "":
+                message_var.set("Please enter a room name.")
+            elif username_entry.get() == "":
+                message_var.set("Please enter your username.")
+            elif password_entry.get() == "":
+                message_var.set("Please enter your password.")
+            elif roomName_label.get() == "":
+                message_var.set("Please enter a room name.")
 
 
 def stop_bot():
