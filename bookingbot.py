@@ -44,7 +44,6 @@ validateMaximum = False
 roomName = "UBCOBookingBot"
 info_file = "UBBuserdata.dat"
 
-
 def check_for_updates():
     print("Checking for updates...")
     # URL of the raw content of the script on GitHub
@@ -91,8 +90,8 @@ def check_for_updates():
                 file.write(github_script)
             print("BookingBotApp.pyw downloaded.")
             print("Please run BookingBotApp.pyw to use the app version of this bot.")
-            time.sleep(3)
-            os.system("exit")
+            time.sleep(5)
+            sys.exit()
 
 
 def scriptInput(input):
