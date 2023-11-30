@@ -1,8 +1,6 @@
 # Selenium-based bot by RIN
 # This is a script that will run a bot that will automatically study book rooms from https://bookings.ok.ubc.ca/studyrooms/
 
-# test this script was pulled from updates 2
-
 # import libraries and modules needed
 import os
 import sys
@@ -611,10 +609,14 @@ def checkPassword():
 def check_if_logged_in():
     global info_file
     global driver
+    global isOnUBCOWifi
     current_url = driver.current_url
     current_title = driver.title
     if current_title == "CWL Enhanced Security":
-        print("User has logged in, now waiting for 2FA (DUO Push)")
+        if not isOnUBCOWifi:
+            print("User has logged in, DUO Push needed (not on UBCO WiFi)")
+        else:
+            print("User has logged in, DUO Push not needed (on UBCO WiFi)")
     else:
         print("\nUser credentials incorrect. Please rerun the program.")
         # delete the username and password files
