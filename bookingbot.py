@@ -818,7 +818,6 @@ else:
     driver.get(targetWebsite)
 
 window_handle = driver.current_window_handle
-driver.minimize_window()
 print("Now accessing:", driver.title)
 
 checkRoom()
