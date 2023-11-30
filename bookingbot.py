@@ -610,14 +610,12 @@ def checkPassword():
 
 
 def check_if_logged_in():
-    global window_handle
     global info_file
     global driver
     current_url = driver.current_url
     current_title = driver.title
     if current_title == "CWL Enhanced Security":
         print("User has logged in, now waiting for 2FA (DUO Push)")
-        driver.switch_to.window(window_handle)
     else:
         print("\nUser credentials incorrect. Please rerun the program.")
         # delete the username and password files
@@ -817,7 +815,6 @@ else:
     driver.set_window_size(600, 600)
     driver.get(targetWebsite)
 
-window_handle = driver.current_window_handle
 print("Now accessing:", driver.title)
 
 checkRoom()
@@ -825,8 +822,6 @@ checkRoomName()
 checkUsername()
 checkPassword()
 check_if_logged_in()
-
-driver.minimize_window()
 
 # ask user if they want to start a new session or extend etc
 # userInput = input(
