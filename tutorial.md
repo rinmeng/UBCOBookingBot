@@ -4,13 +4,11 @@
 
 ### How to run:
 
-- Download the script `bookingbot.py` and then store it in `/Users/(your username)` for `macOS` or `C:/Users/(your username)` for `Windows`. This is to make it convenient when running the actual program.
-
 - You will need [Google Chrome](https://www.google.com/chrome/) installed on your device. This program will not work without it.
 
 - You must have latest version of [Python](https://www.python.org/downloads/) installed on your device.
 
-- Once installed, run the program by opening `BookingBot.pyw` using `Python Launcher`.
+- Once installed, run the program by opening `BookingBot.pyw` (dependency: `bookingbot.py`) using `Python Launcher`.
 
 - Make sure you have DUO Push set up with your phone.
 
