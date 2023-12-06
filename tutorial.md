@@ -26,6 +26,4 @@
 
 - Program is not meant to be used for commercial purposes, it is meant to be used by students who are enrolled in UBCO.
 
-- Program is not meant to be used for any other purposes besides booking a room for COMS121 at UBCO.
-
 - If you want to fork this project and make it better, please do so, but please do not use it for malicious purposes.
