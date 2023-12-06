@@ -10,19 +10,17 @@
 
 - You must have latest version of [Python](https://www.python.org/downloads/) installed on your device.
 
-- Once installed, type in `python3 bookingbot.py` in your terminal to run the program.
+- Once installed, run the program by opening `BookingBot.pyw` using `Python Launcher`.
+
+- Make sure you have DUO Push set up with your phone.
+
+- Fill out infos, and then the program will run.
 
 ### When running:
 
-- Upon running this program, it will ask if you want to run in headless mode, if you do, it will not open a chrome window and it will just run in the background note that it is easier to see what is going on when you run in non-headless mode.
+- If using UBCO wifi, you will not need to configure DUO push. If you are not using UBCO wifi, you will need to send DUO push.
 
-- Then it will ask for room name, number and your CWL credential to log into the `UBCO booking system`. It will not be stored anywhere besides on your machine in same place where you stored `bookingbot.py` as a file called `UBBuserdata.dat`.
-
-- If you choose not to enter the right credentials, the program will not work and will ask you to rerun the program. Once you enter the right credentials, the program will save your credentials for next time and automatically run in headless mode and log you on for the next time.
-
-### Some tips:
-
-- if you want to change room number or room name, I suggest you deleting the `UBBuserdata.dat` file and rerun the program.
+- If you choose not to enter the right credentials, the program will not work and will ask you to rerun the program. Once you enter the right credentials, the program will save your credentials for next time in `UBBuserdata.dat` and automatically run in headless mode and log you on for the next time.
 
 ### Footnotes
 
