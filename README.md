@@ -1,3 +1,5 @@
+## ALERT: NO SUPPORT FOR WINDOWS, PLEASE USE MACOS OR LINUX
+
 #### `Beta v2.5` includes:
 
 - Working on implementing app version of the bot, using `tkinter` for the GUI
