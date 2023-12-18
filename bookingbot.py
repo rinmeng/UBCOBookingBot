@@ -40,7 +40,7 @@ extendIndex = 0
 validateMaximum = False
 
 roomName = "UBCOBookingBot"
-info_file = "UBBuserdata.dat"
+info_file = "data.rin"
 
 def check_for_updates():
     print("Checking for updates...")
@@ -665,7 +665,7 @@ def check_if_logged_in():
         print("\nUser credentials incorrect. Please rerun the program.")
         # delete the username and password files
         os.remove(info_file)
-        print("Deleted info.dat file.")
+        print("Deleted " + info_file + ". Please rerun the program.")
     while current_url != targetWebsite:
         current_url = driver.current_url
         time.sleep(0.5)

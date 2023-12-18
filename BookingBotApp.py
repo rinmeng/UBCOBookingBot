@@ -10,7 +10,7 @@ from tkinter import ttk
 
 # Check for updates ---------------------------------------------------------
 isRunningFromSource = False
-info_file = "UBBuserdata.dat"
+info_file = "data.rin"
 terminal_shown = False
 # Check if we are running from source
 if (
