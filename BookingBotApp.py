@@ -15,7 +15,7 @@ terminal_shown = False
 # Check if we are running from source
 if (
     os.path.exists("INFOS.md")
-    or os.path.exists("LICENSE.md")
+    or os.path.exists("LICENSE.txt")
     or os.path.exists("README.md")
 ):
     isRunningFromSource = True
