@@ -12,7 +12,7 @@ import platform
 import subprocess
 import datetime as dt
 
-version = "Beta v2.6"
+version = "Beta v2.6" 
 isRunningFromSource = True
 isOnMac = False
 isOnWindows = False

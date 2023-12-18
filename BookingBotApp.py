@@ -7,7 +7,7 @@ import subprocess
 import tkinter as tk
 from tkinter import ttk
 
-APPVERSION = "v1.1"
+APPVERSION = "v1.1" 
 scriptName = "bookingbot.py"
 appName = "BookingBotApp.py"
 # Check for updates ---------------------------------------------------------
@@ -53,6 +53,7 @@ if isRunningFromSource == False:
                     sys.exit()
                     
 # check for BookingBotApp.py updates
+appVer = ""
 if isRunningFromSource == False:
     url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.py"
     response = requests.get(url)
@@ -61,7 +62,7 @@ if isRunningFromSource == False:
         with open(appName, "r") as file:
             local_app_script = file.read()
             if "APPVERSION = " in local_app_script:
-                scriptVersion = local_app_script.split('=')[1].strip().strip('"').strip()
+                appVer = local_app_script.split('=')[1].strip().strip('"').strip()
         if not local_app_script == github_app_script:
             print("Update is avaiable, fetching update from GitHub...")
             with open(appName, "w") as file:
@@ -70,7 +71,7 @@ if isRunningFromSource == False:
                 time.sleep(5)
                 sys.exit()
 print("bookingbot.py is up to date on version " + scriptVersion + "\n")
-print("BookingBotApp.py is up to date on version " + APPVERSION + "\n")
+print("BookingBotApp.py is up to date on version " + appVer + "\n")
 # ---------------------------------------------------------------------------
 
 
