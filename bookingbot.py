@@ -41,6 +41,7 @@ validateMaximum = False
 
 roomName = "UBCOBookingBot"
 info_file = "data.rin"
+areaName = ""
 
 
 def check_for_updates():
@@ -102,11 +103,20 @@ def scriptInput(input):
     global extendIndex
     global validateMaximum
     global driver
+    global areaName
     # ------------------- FRESH -------------------
     if input == "f":
         validateMaximum = True
         print("\n----------------------------------------")
-        print("[FRESH MODE] for room " + roomName + " in room COMS " + roomStr + ".")
+        print(
+            "[FRESH MODE] for room "
+            + roomName
+            + " in room "
+            + areaName
+            + " "
+            + roomStr
+            + "."
+        )
         website = (
             "https://bookings.ok.ubc.ca/studyrooms/edit_entry.php?year="
             + str(future_date.year)
@@ -212,7 +222,15 @@ def scriptInput(input):
     # ------------------- EXTEND -------------------
     elif input == "e":
         print("\n----------------------------------------")
-        print("[EXTEND MODE] for room " + roomName + " in room COMS " + roomStr + ".")
+        print(
+            "[EXTEND MODE] for room "
+            + roomName
+            + " in room "
+            + areaName
+            + " "
+            + roomStr
+            + "."
+        )
         website = (
             "https://bookings.ok.ubc.ca/studyrooms/index.php?view=day&page_date="
             + str(future_date.year)
@@ -423,11 +441,13 @@ def checkRoom():
     global roomStr
     global info_file
     global area
+    global areaName
     foundRoomStr = False
     if os.path.exists(info_file):
         with open(info_file, "r") as file:
             for line in file:
                 if "com=" in line:
+                    areaName = "COM"
                     area = 7
                     foundRoomStr = True
                     roomStr = line.split("=")[1].strip()
@@ -476,6 +496,7 @@ def checkRoom():
                                     foundRoomStr = False
                                     print("COMS " + roomStr + " is an invalid room.")
                 elif "lib=" in line:
+                    areaName = "LIB"
                     foundRoomStr = True
                     roomStr = line.split("=")[1].strip()
                     area = 1
@@ -487,12 +508,14 @@ def checkRoom():
                             room = 1
                             break
                 elif "eme1=" in line:
+                    areaName = "EME"
                     foundRoomStr = True
                     area = 8
                     roomStr = line.split("=")[1].strip()
                     room = int(roomStr) - 1108
                     break
                 elif "eme2=" in line:
+                    areaName = "EME"
                     foundRoomStr = True
                     area = 9
                     roomStr = line.split("=")[1].strip()
@@ -524,9 +547,12 @@ def checkRoom():
                         case "2257":
                             room = 53
                             break
+                        case _:
+                            print("EME " + roomStr + " is an invalid room.")
+                            break
         if foundRoomStr == False:
             while True:
-                room = input("Booking for room COMS: ")
+                room = input("Booking for room ")
                 roomStr = str(room)
                 # if input starts with 1 and is 3 digits long
                 if room[0] == "0" and len(room) == 3:
@@ -537,7 +563,7 @@ def checkRoom():
                     if 12 <= room <= 15:
                         break
                     else:
-                        print("COMS " + roomStr + " is an invalid room.")
+                        print("COM " + roomStr + " is an invalid room.")
                 elif room[0] == "1" and len(room) == 3:
                     area = 6
                     # for coms 108 to 121
@@ -549,7 +575,7 @@ def checkRoom():
                     if 16 <= room <= 29:
                         break
                     else:
-                        print("COMS " + roomStr + " is an invalid room.")
+                        print("COM " + roomStr + " is an invalid room.")
                 elif room[0] == "3" and len(room) == 3:
                     area = 7
                     # for coms 301 to 309
@@ -574,9 +600,9 @@ def checkRoom():
                         if 30 <= room <= 38:
                             break
                         else:
-                            print("COMS " + roomStr + " is an invalid room.")
+                            print("COM " + roomStr + " is an invalid room.")
                 else:
-                    print("COMS " + roomStr + " is an invalid room.")
+                    print("COM " + roomStr + " is an invalid room.")
             with open(info_file, "a") as file:
                 file.write("com=" + str(roomStr) + "\n")
 
