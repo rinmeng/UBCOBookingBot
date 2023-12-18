@@ -63,6 +63,27 @@ if isRunningFromSource == False:
                     print("Your script has been updated please restart the app")
                     time.sleep(5)
                     sys.exit()
+                    
+# check for BookingBotApp.py updates
+if isRunningFromSource == False:
+    url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.py"
+    response = requests.get(url)
+    if response.status_code == 200:
+
+        github_script = response.text
+
+        with open("BookingBotApp.py", "r") as file:
+            # Get the content of the local script
+            local_script = file.read()
+        if local_script == github_script:
+            print("Your script is up to date on version " + APPVERSION)
+        else:
+            print("Fetching update from GitHub...")
+            with open("BookingBotApp.py", "w") as file:
+                file.write(github_script)
+                print("Your script has been updated please restart the app")
+                time.sleep(5)
+                sys.exit()
 # ---------------------------------------------------------------------------
 
 
