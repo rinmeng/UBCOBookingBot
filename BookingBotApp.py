@@ -266,15 +266,13 @@ def run_bot():
             and password_entry.get() != ""
             and roomName_label.get() != ""
         ):
-            print("\n\nALERT: Bot started.")
-            message_var.set("Running bot...")
+            
             running = True
             run_button.config(state="disabled")
             stop_button.config(state="normal")
 
             with open(info_file, "w") as file:
                 building = building_option.get()
-                print(building)
                 file.write("lastUsedRoom=" + room_option.get() + "\n")
                 room_number = room_option.get().split(" ")[1]
                 if "COM" in building:
@@ -293,6 +291,8 @@ def run_bot():
 
             # run the bot if on mac
             if platform.system() == "Darwin":
+                print("\n\nALERT: Bot started.")
+                message_var.set("Running bot...")
                 subprocess.Popen(
                     [
                         "python3",
@@ -303,7 +303,8 @@ def run_bot():
                 "Bot is running in terminal.\nPlease do not close the terminal window."
                 + "\nIf you want to stop the bot, click the 'Stop bot' button.")
             else:
-                message_var.set("Oops! Your OS is not supported")
+                print("\n\nALERT: Oops! Your OS is not supported yet!")
+                message_var.set("Oops! Your OS is not supported yet!")
         else:
             message_var.set("Please fill in all the fields.")
 
