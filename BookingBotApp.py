@@ -49,7 +49,7 @@ if isRunningFromSource == False:
                     print("Your script has been updated, please restart the app")
                     time.sleep(5)
                     sys.exit()
-                    
+
 # check for BookingBotApp.py updates
 appVer = ""
 if isRunningFromSource == False:
@@ -60,7 +60,7 @@ if isRunningFromSource == False:
         with open(appName, "r") as file:
             local_app_script = file.read()
             if "APPVERSION = " in local_app_script:
-                appVer = local_app_script.split('=')[1].strip().strip('"')
+                appVer = local_app_script.split("=")[1].strip().strip('"')
         if not local_app_script == github_app_script:
             print("Update is avaiable, fetching update from GitHub...")
             with open(appName, "w") as file:
@@ -125,7 +125,14 @@ building_label.pack(side="left", padx=(0, 10))
 building_option = ttk.Combobox(
     building_frame,
     textvariable=building,
-    values=["Library", "Commons: Floor 0", "Commons: Floor 1", "Commons: Floor 3", "EME: Tower 1", "EME: Tower 2"],
+    values=[
+        "Library",
+        "Commons: Floor 0",
+        "Commons: Floor 1",
+        "Commons: Floor 3",
+        "EME: Tower 1",
+        "EME: Tower 2",
+    ],
     state="readonly",
 )
 # set building to the last used building
@@ -186,14 +193,15 @@ roomName_label.pack(side="left")
 
 
 def update_options(*args):
+    room_option.set("")
     if building.get() == "EME: Tower 1":
         options = [
-            "EME 1162 (10 people)", 
-            "EME 1163 (6)", 
-            "EME 1164 (6)", 
-            "EME 1165 (6)", 
-            "EME 1166 (6)", 
-            "EME 1167 (6)", 
+            "EME 1162 (10 people)",
+            "EME 1163 (6)",
+            "EME 1164 (6)",
+            "EME 1165 (6)",
+            "EME 1166 (6)",
+            "EME 1167 (6)",
             "EME 1168 (6)",
         ]
     elif building.get() == "EME: Tower 2":
@@ -253,10 +261,11 @@ def update_options(*args):
 
     room_option["values"] = options
 
+
 building.trace_add("write", update_options)
 
 message_var = tk.StringVar()
-message_var.set("Please select a building and room")
+message_var.set("")
 running = False
 
 
@@ -273,7 +282,6 @@ def run_bot():
             and password_entry.get() != ""
             and roomName_label.get() != ""
         ):
-            
             running = True
             run_button.config(state="disabled")
             stop_button.config(state="normal")
@@ -307,8 +315,9 @@ def run_bot():
                     ]
                 )
                 message_var.set(
-                "Bot is running in terminal.\nPlease do not close the terminal window."
-                + "\nIf you want to stop the bot, click the 'Stop bot' button.")
+                    "Bot is running in terminal.\nPlease do not close the terminal window."
+                    + "\nIf you want to stop the bot, click the 'Stop bot' button."
+                )
             else:
                 print("\n\nALERT: Oops! Your OS is not supported yet!")
                 message_var.set("Oops! Your OS is not supported yet!")
