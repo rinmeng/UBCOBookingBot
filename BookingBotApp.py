@@ -7,7 +7,7 @@ import subprocess
 import tkinter as tk
 from tkinter import ttk
 
-APPVERSION = "v1.1" 
+APPVERSION = "v1.1"
 scriptName = "bookingbot.py"
 appName = "BookingBotApp.py"
 # Check for updates ---------------------------------------------------------
@@ -43,7 +43,7 @@ if isRunningFromSource == False:
             with open(scriptName, "r") as file:
                 local_script = file.read()
                 if "version = " in local_script:
-                    scriptVersion = local_script.split('=')[1].strip().strip('"').strip()
+                    scriptVersion = local_script.split('=')[1].strip().strip('"')
             if not local_script == github_script:
                 print("Update is avaiable, fetching update from GitHub...")
                 with open(scriptName, "w") as file:
@@ -62,7 +62,7 @@ if isRunningFromSource == False:
         with open(appName, "r") as file:
             local_app_script = file.read()
             if "APPVERSION = " in local_app_script:
-                appVer = local_app_script.split('=')[1].strip().strip('"').strip()
+                appVer = local_app_script.split('=')[1].strip().strip('"')
         if not local_app_script == github_app_script:
             print("Update is avaiable, fetching update from GitHub...")
             with open(appName, "w") as file:
