@@ -23,42 +23,31 @@ else:
     isRunningFromSource = False
 
 # check if user has the bookingbot.py script, if not,
-# download from https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/bookingbot.py
 if isRunningFromSource == False:
     if not os.path.exists("bookingbot.py"):
         url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/bookingbot.py"
         response = requests.get(url)
-        # Check if the request was successful
         if response.status_code == 200:
             if not os.path.exists("bookingbot.py"):
                 response = requests.get(url)
                 with open("bookingbot.py", "w") as file:
                     file.write(response.text)
     else:
-        # URL of the raw content of the script on GitHub
         url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/bookingbot.py"
-
-        # Send a GET request to the URL
         response = requests.get(url)
-
-        # If the request was successful
         if response.status_code == 200:
-            # Get the content of the script on GitHub
             github_script = response.text
-
-            # Open the local script
+            scriptVersion = ""
             with open("bookingbot.py", "r") as file:
-                # Get the content of the local script
                 local_script = file.read()
-
-            # Compare the content of the local script with the content of the script on GitHub
+                if "version = " in local_script:
+                    scriptVersion = local_script.split("version = ")[1].strip()
             if local_script == github_script:
-                print("Your script is up to date on version " + APPVERSION)
+                local_script = file.read()
+                print("Your script is up to date on v" + scriptVersion)
             else:
                 print("Fetching update from GitHub...")
-                # Open the local script in write mode
                 with open("bookingbot.py", "w") as file:
-                    # Overwrite the content of the local script with the content of the script on GitHub
                     file.write(github_script)
                     print("Your script has been updated please restart the app")
                     time.sleep(5)
@@ -69,18 +58,15 @@ if isRunningFromSource == False:
     url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.py"
     response = requests.get(url)
     if response.status_code == 200:
-
-        github_script = response.text
-
+        github_app_script = response.text
         with open("BookingBotApp.py", "r") as file:
-            # Get the content of the local script
-            local_script = file.read()
-        if local_script == github_script:
-            print("Your script is up to date on version " + APPVERSION)
+            local_app_script = file.read()
+        if local_app_script == github_app_script:
+            print("Your app is up to date on version " + APPVERSION)
         else:
             print("Fetching update from GitHub...")
             with open("BookingBotApp.py", "w") as file:
-                file.write(github_script)
+                file.write(github_app_script)
                 print("Your script has been updated please restart the app")
                 time.sleep(5)
                 sys.exit()
