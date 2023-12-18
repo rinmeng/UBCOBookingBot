@@ -67,7 +67,7 @@ if isRunningFromSource == False:
             print("Update is avaiable, fetching update from GitHub...")
             with open(appName, "w") as file:
                 file.write(github_app_script)
-                print("Your app has been updated to version " + APPVERSION + " please restart the app")
+                print("Your app has been updated to version " + appVer + " please restart the app")
                 time.sleep(5)
                 sys.exit()
 print("bookingbot.py is up to date on version " + scriptVersion + "\n")
