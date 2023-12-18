@@ -274,15 +274,15 @@ def run_bot():
 
             with open(info_file, "w") as file:
                 building = building_option.get()
+                print(building)
                 file.write("lastUsedRoom=" + room_option.get() + "\n")
                 room_number = room_option.get().split(" ")[1]
                 if "COM" in building:
                     file.write("com=" + room_number + "\n")
-                elif "EME" in building:
-                    if "1162" in building:
-                        file.write("eme1=" + room_number + "\n")
-                    if "1252" in building:
-                        file.write("eme2=" + room_number + "\n")
+                elif "EME: Tower 1" in building:
+                    file.write("eme1=" + room_number + "\n")
+                elif "EME: Tower 2" in building:
+                    file.write("eme2=" + room_number + "\n")
                 elif "LIB" in building:
                     file.write("lib=" + room_number + "\n")
 
@@ -299,10 +299,11 @@ def run_bot():
                         "bookingbot.py",
                     ]
                 )
-            message_var.set(
+                message_var.set(
                 "Bot is running in terminal.\nPlease do not close the terminal window."
-                + "\nIf you want to stop the bot, click the 'Stop bot' button."
-            )
+                + "\nIf you want to stop the bot, click the 'Stop bot' button.")
+            else:
+                message_var.set("Oops! Your OS is not supported")
         else:
             message_var.set("Please fill in all the fields.")
 
