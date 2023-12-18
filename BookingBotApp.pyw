@@ -63,22 +63,6 @@ if isRunningFromSource == False:
                     print("Your script has been updated please restart the app")
                     time.sleep(5)
                     sys.exit()
-
-
-# Check if the request was successful
-if isRunningFromSource == False:
-    url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.pyw"
-    response = requests.get(url)
-    if response.status_code == 200:
-        # Read the content of the local script
-        with open("BookingBotApp.pyw", "r") as file:
-            local_script = file.read()
-
-        # Compare with the GitHub script
-        if response.text != local_script:
-            # If the scripts don't match, update the local script
-            with open("BookingBotApp.pyw", "w") as file:
-                file.write(response.text)
 # ---------------------------------------------------------------------------
 
 
@@ -134,7 +118,7 @@ building_label.pack(side="left", padx=(0, 10))
 building_option = ttk.Combobox(
     building_frame,
     textvariable=building,
-    values=["EME", "COM: 0th Floor", "COM: 1st Floor", "COM: 3rd Floor", "LIB"],
+    values=["Library", "Commons: Floor 0", "Commons: Floor 1", "Commons: Floor 3", "EME: Tower 1", "EME: Tower 2"],
     state="readonly",
 )
 # set building to the last used building
@@ -146,17 +130,20 @@ if os.path.exists(info_file):
                     0
                 ]  # Get the first digit of the room number
                 if floor_number == "0":
-                    building_option.set("COM: 0th Floor")
+                    building_option.set("Commons: Floor 0")
                 elif floor_number == "1":
-                    building_option.set("COM: 1st Floor")
+                    building_option.set("Commons: Floor 1")
                 elif floor_number == "3":
-                    building_option.set("COM: 3rd Floor")
+                    building_option.set("Commons: Floor 3")
                 break
-            elif "eme" in line:
-                building_option.set("EME")
+            elif "eme1" in line:
+                building_option.set("EME: Tower 1")
+                break
+            elif "eme2" in line:
+                building_option.set("EME: Tower 2")
                 break
             elif "lib" in line:
-                building_option.set("LIB")
+                building_option.set("Library")
                 break
 building_option.pack(side="left")
 
@@ -192,18 +179,37 @@ roomName_label.pack(side="left")
 
 
 def update_options(*args):
-    if building.get() == "EME":
-        options = ["not yet implemented"]
-    elif building.get() == "COM: 0th Floor":
+    if building.get() == "EME: Tower 1":
+        options = [
+            "EME 1162 (10 people)", 
+            "EME 1163 (6)", 
+            "EME 1164 (6)", 
+            "EME 1165 (6)", 
+            "EME 1166 (6)", 
+            "EME 1167 (6)", 
+            "EME 1168 (6)",
+        ]
+    elif building.get() == "EME: Tower 2":
+        options = [
+            "EME 1252 (10 people)",
+            "EME 1254 (8)",
+            "EME 2242 (8)",
+            "EME 2244 (8)",
+            "EME 2246 (8)",
+            "EME 2248 (8)",
+            "EME 2252 (8)",
+            "EME 2254 (8)",
+            "EME 2257 (10)",
+        ]
+    elif building.get() == "Commons: Floor 0":
         options = [
             "COM 005 (4 people)",
             "COM 006 (4)",
             "COM 007 (4)",
             "COM 008 (4)",
         ]
-    elif building.get() == "COM: 1st Floor":
+    elif building.get() == "Commons: Floor 1":
         options = [
-            "*COM 121 (10)",
             "COM 108 (4 people)",
             "COM 109 (4)",
             "COM 110 (10)",
@@ -217,8 +223,9 @@ def update_options(*args):
             "COM 118 (6)",
             "COM 119 (6)",
             "COM 120 (6)",
+            "COM 121 (10)",
         ]
-    elif building.get() == "COM: 3rd Floor":
+    elif building.get() == "Commons: Floor 3":
         options = [
             "COM 301 (4 people)",
             "COM 302 (4)",
@@ -239,8 +246,7 @@ def update_options(*args):
 
     room_option["values"] = options
 
-
-building.trace("w", update_options)
+building.trace_add("write", update_options)
 
 message_var = tk.StringVar()
 message_var.set("Please select a building and room")
@@ -273,7 +279,10 @@ def run_bot():
                 if "COM" in building:
                     file.write("com=" + room_number + "\n")
                 elif "EME" in building:
-                    file.write("eme=" + room_number + "\n")
+                    if "1162" in building:
+                        file.write("eme1=" + room_number + "\n")
+                    if "1252" in building:
+                        file.write("eme2=" + room_number + "\n")
                 elif "LIB" in building:
                     file.write("lib=" + room_number + "\n")
 
@@ -295,18 +304,7 @@ def run_bot():
                 + "\nIf you want to stop the bot, click the 'Stop bot' button."
             )
         else:
-            if building_option.get() == "":
-                message_var.set("Please select a building.")
-            elif room_option.get() == "":
-                message_var.set("Please select a room.")
-            elif roomName_label.get() == "":
-                message_var.set("Please enter a room name.")
-            elif username_entry.get() == "":
-                message_var.set("Please enter your username.")
-            elif password_entry.get() == "":
-                message_var.set("Please enter your password.")
-            elif roomName_label.get() == "":
-                message_var.set("Please enter a room name.")
+            message_var.set("Please fill in all the fields.")
 
 
 def stop_bot():
