@@ -42,6 +42,7 @@ validateMaximum = False
 roomName = "UBCOBookingBot"
 info_file = "data.rin"
 
+
 def check_for_updates():
     print("Checking for updates...")
     # URL of the raw content of the script on GitHub
@@ -74,7 +75,7 @@ def check_for_updates():
     if not os.path.exists("BookingBotApp.py") and isRunningFromSource == False:
         print("The app version is available, downloading now...")
         # URL of the raw content of the script on GitHub
-        url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.pyw"
+        url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.py"
         # Send a GET request to the URL
         response = requests.get(url)
         # If the request was successful
@@ -474,7 +475,9 @@ def checkRoom():
                                         break
                                     else:
                                         foundRoomStr = False
-                                        print("COMS " + roomStr + " is an invalid room.")
+                                        print(
+                                            "COMS " + roomStr + " is an invalid room."
+                                        )
                     case "lib=":
                         foundRoomStr = True
                         roomStr = line.split("=")[1].strip()
