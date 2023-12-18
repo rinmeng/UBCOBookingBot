@@ -427,106 +427,103 @@ def checkRoom():
     if os.path.exists(info_file):
         with open(info_file, "r") as file:
             for line in file:
-                match line:
-                    case "com=":
-                        area = 7
-                        foundRoomStr = True
-                        roomStr = line.split("=")[1].strip()
-                        # if input starts with 1 and is 3 digits long
-                        if roomStr[0] == "0" and len(roomStr) == 3:
-                            room = int(roomStr) + 7
-                            if 12 <= room <= 15:
-                                break
-                            else:
-                                foundRoom = False
-                                print("COMS " + roomStr + " is an invalid room.")
-                            area = 5
-                        elif roomStr[0] == "1" and len(roomStr) == 3:
-                            if str(room) == "":
-                                foundRoom = False
-                                break
-                            room = int(roomStr) - 92
-                            if 16 <= room <= 29:
-                                break
-                            else:
+                if "com=" in line:
+                    area = 7
+                    foundRoomStr = True
+                    roomStr = line.split("=")[1].strip()
+                    # if input starts with 1 and is 3 digits long
+                    if roomStr[0] == "0" and len(roomStr) == 3:
+                        room = int(roomStr) + 7
+                        if 12 <= room <= 15:
+                            break
+                        else:
+                            foundRoom = False
+                            print("COMS " + roomStr + " is an invalid room.")
+                        area = 5
+                    elif roomStr[0] == "1" and len(roomStr) == 3:
+                        if str(room) == "":
+                            foundRoom = False
+                            break
+                        room = int(roomStr) - 92
+                        if 16 <= room <= 29:
+                            break
+                        else:
+                            foundRoomStr = False
+                            print("COMS " + roomStr + " is an invalid room.")
+                        area = 6
+                    elif roomStr[0] == "3" and len(roomStr) == 3:
+                        match str(roomStr):
+                            case "":
                                 foundRoomStr = False
-                                print("COMS " + roomStr + " is an invalid room.")
-                            area = 6
-                        elif roomStr[0] == "3" and len(roomStr) == 3:
-                            match str(roomStr):
-                                case "":
+                                break
+                            case "312":
+                                room = "39"
+                                break
+                            case "314":
+                                room = "40"
+                                break
+                            case "316":
+                                room = "41"
+                                break
+                            case "318":
+                                room = "42"
+                                break
+                            case _:
+                                room = int(roomStr) - 271
+                                if 30 <= room <= 38:
+                                    break
+                                else:
                                     foundRoomStr = False
-                                    break
-                                case "312":
-                                    room = "39"
-                                    break
-                                case "314":
-                                    room = "40"
-                                    break
-                                case "316":
-                                    room = "41"
-                                    break
-                                case "318":
-                                    room = "42"
-                                    break
-                                case _:
-                                    room = int(roomStr) - 271
-                                    if 30 <= room <= 38:
-                                        break
-                                    else:
-                                        foundRoomStr = False
-                                        print(
-                                            "COMS " + roomStr + " is an invalid room."
-                                        )
-                    case "lib=":
-                        foundRoomStr = True
-                        roomStr = line.split("=")[1].strip()
-                        area = 1
-                        match roomStr:
-                            case "121":
-                                room = 2
-                                break
-                            case "122":
-                                room = 1
-                                break
-                    case "eme1=":
-                        foundRoomStr = True
-                        area = 8
-                        roomStr = line.split("=")[1].strip()
-                        room = int(roomStr) - 1108
-                        break
-                    case "eme2=":
-                        foundRoomStr = True
-                        area = 9
-                        roomStr = line.split("=")[1].strip()
-                        match roomStr:
-                            case "1252":
-                                room = 43
-                                break
-                            case "1254":
-                                room = 44
-                                break
-                            case "2242":
-                                room = 46
-                                break
-                            case "2244":
-                                room = 48
-                                break
-                            case "2246":
-                                room = 49
-                                break
-                            case "2248":
-                                room = 50
-                                break
-                            case "2252":
-                                room = 51
-                                break
-                            case "2254":
-                                room = 52
-                                break
-                            case "2257":
-                                room = 53
-                                break
+                                    print("COMS " + roomStr + " is an invalid room.")
+                elif "lib=" in line:
+                    foundRoomStr = True
+                    roomStr = line.split("=")[1].strip()
+                    area = 1
+                    match roomStr:
+                        case "121":
+                            room = 2
+                            break
+                        case "122":
+                            room = 1
+                            break
+                elif "eme1=" in line:
+                    foundRoomStr = True
+                    area = 8
+                    roomStr = line.split("=")[1].strip()
+                    room = int(roomStr) - 1108
+                    break
+                elif "eme2=" in line:
+                    foundRoomStr = True
+                    area = 9
+                    roomStr = line.split("=")[1].strip()
+                    match roomStr:
+                        case "1252":
+                            room = 43
+                            break
+                        case "1254":
+                            room = 44
+                            break
+                        case "2242":
+                            room = 46
+                            break
+                        case "2244":
+                            room = 48
+                            break
+                        case "2246":
+                            room = 49
+                            break
+                        case "2248":
+                            room = 50
+                            break
+                        case "2252":
+                            room = 51
+                            break
+                        case "2254":
+                            room = 52
+                            break
+                        case "2257":
+                            room = 53
+                            break
         if foundRoomStr == False:
             while True:
                 room = input("Booking for room COMS: ")
