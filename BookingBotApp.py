@@ -60,13 +60,15 @@ if isRunningFromSource == False:
         github_app_script = response.text
         with open("BookingBotApp.py", "r") as file:
             local_app_script = file.read()
+            if "APPVERSION = " in local_app_script:
+                scriptVersion = local_app_script.split('=')[1].strip().strip('"')
         if local_app_script == github_app_script:
             print("BookingBotApp.py is up to date on version " + APPVERSION)
         else:
-            print("Fetching update from GitHub...")
+            print("Update is avaiable, fetching update from GitHub...")
             with open("BookingBotApp.py", "w") as file:
                 file.write(github_app_script)
-                print("Your script has been updated please restart the app")
+                print("Your script has been updated to version " + APPVERSION + " please restart the app")
                 time.sleep(5)
                 sys.exit()
 # ---------------------------------------------------------------------------
