@@ -67,7 +67,7 @@ if isRunningFromSource == False:
 
 
 # App -----------------------------------------------------------------------
-APPVERSION = "1.0"
+APPVERSION = "1.1"
 
 root = tk.Tk()
 root.title("UBCO Booking Bot App v" + APPVERSION)

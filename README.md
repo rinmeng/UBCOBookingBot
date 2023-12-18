@@ -1,10 +1,20 @@
 ## ALERT: NO SUPPORT FOR WINDOWS (APP VERSION), PLEASE USE MACOS OR LINUX, OTHER WISE, USE `bookingbot.py` FOR WINDOWS. IGNORE ALL MESSAGES
 
+## `BookingBotApp.pyw` version:
+
+#### `v1.1` includes:
+
+- Added support for all buildings
+
+#### `v1.0` includes:
+
+- Basic GUI for the app version of the bot
+
 ## `bookingbot.py` script version:
 
 #### `Beta v2.6` includes
 
-- Lots of bug fixes & implemented ability to book other buildings.
+- Lots of bug fixes & implemented ability to book all buildings.
 - Working on improving the GUI & implementing windows support for the app version.
 
 #### `Beta v2.5` includes
