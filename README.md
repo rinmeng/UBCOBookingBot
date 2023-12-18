@@ -1,4 +1,5 @@
-## ALERT: NO SUPPORT FOR WINDOWS (APP VERSION), PLEASE USE MACOS OR LINUX, OTHER WISE, USE `bookingbot.py` FOR WINDOWS. IGNORE ALL MESSAGES
+## ALERT: No full suport for Windows yet for the app version. 
+## Please use macOS or Linux, otherwise, use `bookingbot.py` for windows. Ignore all messages.
 
 ## `BookingBotApp.pyw` version:
 
