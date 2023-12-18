@@ -290,13 +290,13 @@ def run_bot():
                 building = building_option.get()
                 file.write("lastUsedRoom=" + room_option.get() + "\n")
                 room_number = room_option.get().split(" ")[1]
-                if "COM" in building:
+                if "Commons" in building:
                     file.write("com=" + room_number + "\n")
                 elif "EME: Tower 1" in building:
                     file.write("eme1=" + room_number + "\n")
                 elif "EME: Tower 2" in building:
                     file.write("eme2=" + room_number + "\n")
-                elif "LIB" in building:
+                elif "Library" in building:
                     file.write("lib=" + room_number + "\n")
 
                 file.write("username=" + username_entry.get() + "\n")
