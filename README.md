@@ -23,34 +23,15 @@
 
 #### `Beta v2.4` includes
 
-- Implemented:
-  - Windows support
+- Implemented Windows support for the script version of the bot
 
 #### `Beta v2.3` includes
 
-- `Beta v2.3.0`: Add check for UBCO Wifi connection
+- Add check for UBCO Wifi connection
 
 #### `Beta v2.2` includes
 
-- `Beta v2.2.10`: Fixed more of preprocessing issues
-- `Beta v2.2.9`: Fixed preprocessing issues
-- `Beta v2.2.8`: Restructured code to be more readable and efficient
-- `Beta v2.2.7`: Fixed timing issues with countdown again (hopefully)
-- `Beta v2.2.6`: Fixed updating issues
-- `Beta v2.2.5`: Implemented updates from <https://github.com/rin-williams/UBCOBookingBot/blob/main/bookingbot.py>
-- `Beta v2.2.4`: Fixed timing issues with countdown again
-- `Beta v2.2.3`: Fixed index issues scriptInput and made terminal bigger when running in macOS
-- `Beta v2.2.2`: Fixed timing issues with countdown
-- `Beta v2.2.1`: Fixed checking for UBBuserdata.dat file
-
-- Implemented:
-
-  - Checking to see if user is on macOS, if they are, then check to see if Selenium is installed, if not, then install it
-  - Keeping computer awake (as long as the script is running, max is 3hrs) using Selenium if on macOS
-  - Wait if room is not bookable for fresh mode (someone else already booked the current time slot)
-  - If extend mode does not find a room with the matching name, then it will default to fresh session instead.
-  - Skipping headless mode question if UBBuserdata.dat is found
-  - Countdown the last 9 seconds after waiting for the room to be bookable
+- Fixed a lot of bugs regarding preprocessing and timing.
 
 #### `Beta v2.1` includes
 
