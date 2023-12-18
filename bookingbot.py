@@ -296,7 +296,6 @@ def scriptInput(input):
                     break
 
             # Wait mode, but we have to select the bot session again
-
             findByBotName = driver.find_elements(
                 By.XPATH, f"//a[contains(text(), '{roomName}')]"
             )
