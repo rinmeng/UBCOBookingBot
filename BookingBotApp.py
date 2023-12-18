@@ -43,7 +43,7 @@ if isRunningFromSource == False:
                 if "version = " in local_script:
                     scriptVersion = local_script.split('=')[1].strip().strip('"')
             if local_script == github_script:
-                print("bookingbot.py is up to date on v" + scriptVersion)
+                print("bookingbot.py is up to date on " + scriptVersion)
             else:
                 print("Fetching update from GitHub...")
                 with open("bookingbot.py", "w") as file:
