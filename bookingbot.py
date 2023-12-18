@@ -71,7 +71,7 @@ def check_for_updates():
                 file.write(github_script)
                 print("Your script has been updated")
 
-    if not os.path.exists("BookingBotApp.pyw") and isRunningFromSource == False:
+    if not os.path.exists("BookingBotApp.py") and isRunningFromSource == False:
         print("The app version is available, downloading now...")
         # URL of the raw content of the script on GitHub
         url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/BookingBotApp.pyw"
@@ -83,11 +83,11 @@ def check_for_updates():
             github_script = response.text
 
             # Open the local script in write mode
-            with open("BookingBotApp.pyw", "w") as file:
+            with open("BookingBotApp.py", "w") as file:
                 # Overwrite the content of the local script with the content of the script on GitHub
                 file.write(github_script)
-            print("BookingBotApp.pyw downloaded.")
-            print("Please run BookingBotApp.pyw to use the app version of this bot.")
+            print("BookingBotApp.py downloaded.")
+            print("Please run BookingBotApp.py to use the app version of this bot.")
             time.sleep(5)
             sys.exit()
 
