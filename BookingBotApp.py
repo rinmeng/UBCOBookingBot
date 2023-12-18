@@ -7,7 +7,7 @@ import subprocess
 import tkinter as tk
 from tkinter import ttk
 
-
+APPVERSION = "1.1"
 # Check for updates ---------------------------------------------------------
 isRunningFromSource = False
 info_file = "data.rin"
@@ -53,7 +53,7 @@ if isRunningFromSource == False:
 
             # Compare the content of the local script with the content of the script on GitHub
             if local_script == github_script:
-                print("Your script is up to date")
+                print("Your script is up to date on version " + APPVERSION)
             else:
                 print("Fetching update from GitHub...")
                 # Open the local script in write mode
@@ -67,7 +67,7 @@ if isRunningFromSource == False:
 
 
 # App -----------------------------------------------------------------------
-APPVERSION = "1.1"
+
 
 root = tk.Tk()
 root.title("UBCO Booking Bot App v" + APPVERSION)
