@@ -8,6 +8,8 @@ import tkinter as tk
 from tkinter import ttk
 
 APPVERSION = "v1.1"
+scriptName = "bookingbot.py"
+appName = "BookingBotApp.py"
 # Check for updates ---------------------------------------------------------
 isRunningFromSource = False
 info_file = "data.rin"
@@ -25,26 +27,26 @@ else:
 # check if user has the bookingbot.py script, if not,
 scriptVersion = ""
 if isRunningFromSource == False:
-    if not os.path.exists("bookingbot.py"):
+    if not os.path.exists(scriptName):
         url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/bookingbot.py"
         response = requests.get(url)
         if response.status_code == 200:
-            if not os.path.exists("bookingbot.py"):
+            if not os.path.exists(scriptName):
                 response = requests.get(url)
-                with open("bookingbot.py", "w") as file:
+                with open(scriptName, "w") as file:
                     file.write(response.text)
     else:
         url = "https://raw.githubusercontent.com/rin-williams/UBCOBookingBot/main/bookingbot.py"
         response = requests.get(url)
         if response.status_code == 200:
             github_script = response.text
-            with open("bookingbot.py", "r") as file:
+            with open(scriptName, "r") as file:
                 local_script = file.read()
                 if "version = " in local_script:
                     scriptVersion = local_script.split('=')[1].strip().strip('"').strip()
             if not local_script == github_script:
                 print("Update is avaiable, fetching update from GitHub...")
-                with open("bookingbot.py", "w") as file:
+                with open(scriptName, "w") as file:
                     file.write(github_script)
                     print("Your script has been updated to " + scriptVersion + " please restart the app")
                     time.sleep(5)
@@ -56,19 +58,19 @@ if isRunningFromSource == False:
     response = requests.get(url)
     if response.status_code == 200:
         github_app_script = response.text
-        with open("BookingBotApp.py", "r") as file:
+        with open(appName, "r") as file:
             local_app_script = file.read()
             if "APPVERSION = " in local_app_script:
                 scriptVersion = local_app_script.split('=')[1].strip().strip('"').strip()
         if not local_app_script == github_app_script:
             print("Update is avaiable, fetching update from GitHub...")
-            with open("BookingBotApp.py", "w") as file:
+            with open(appName, "w") as file:
                 file.write(github_app_script)
-                print("Your script has been updated to version " + APPVERSION + " please restart the app")
+                print("Your app has been updated to version " + APPVERSION + " please restart the app")
                 time.sleep(5)
                 sys.exit()
-print("Script is up to date on version " + scriptVersion + "\n")
-print("App is up to date on version " + APPVERSION + "\n")
+print("bookingbot.py is up to date on version " + scriptVersion + "\n")
+print("BookingBotApp.py is up to date on version " + APPVERSION + "\n")
 # ---------------------------------------------------------------------------
 
 
