@@ -17,7 +17,6 @@
 - Lots of bug fixes & implemented ability to book all buildings.
 - Working on improving the GUI & implementing windows support for the app version.
 
-#### `Beta v2.5` includes
 #### `Beta v2.5` includes:
 
 - Working on implementing app version of the bot, using `tkinter` for the GUI
