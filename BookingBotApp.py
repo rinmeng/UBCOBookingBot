@@ -45,10 +45,10 @@ if isRunningFromSource == False:
             if local_script == github_script:
                 print("bookingbot.py is up to date on " + scriptVersion)
             else:
-                print("Fetching update from GitHub...")
+                print("Update is avaiable, fetching update from GitHub...")
                 with open("bookingbot.py", "w") as file:
                     file.write(github_script)
-                    print("Your script has been updated please restart the app")
+                    print("Your script has been updated to version " + scriptVersion + " please restart the app")
                     time.sleep(5)
                     sys.exit()
                     
