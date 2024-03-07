@@ -2,10 +2,6 @@
 
 ## Please do not use beta v2.6 without my help as it could be hard to navigate through the code. Find us at COMS 121 if you have any questions. Thank you.
 
-# ALERT: No full suport for Windows yet for the app version
-
-## Please use macOS or Linux, otherwise, use `bookingbot.py` for windows. Ignore all messages
-
 ## `BookingBotApp.pyw` version
 
 ### `v1.1` includes
