@@ -1,4 +1,4 @@
-# Mar 7 2024: UBCO Booking Bot has been deprecated, a revamped version of the bot will be released soon. You cannot use this bot anymore for now. If you do, find my contacts at this [link](https://rin-williams.github.io/contact.html).
+# Mar 7 2024: UBCO Booking Bot has been deprecated, a revamped version of the bot will be released soon. You cannot use this bot anymore for now. If you do, find my contacts at this [link](https://rin-williams.github.io/contact.html). Please do not use beta v2.6 without my help as it could be hard to navigate through the code. Find us at COMS 121 if you have any questions. Thank you.
 
 # ALERT: No full suport for Windows yet for the app version
 
